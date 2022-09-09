@@ -1,5 +1,9 @@
-// APP ROUTES
+// ====== APP ROUTES ============
 
-String holderscreen = "/";
+// ======== AUTH ROUTES =========
+String loginscreen = "/";
+String signupscreen = "/signup";
 
+// ========= MAIN SCREEN ROUTES ========
+String holderscreen = "/holder";
 String detailscreen = "/detail";

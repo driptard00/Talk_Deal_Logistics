@@ -25,6 +25,8 @@ class HolderScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+
+                  // ======== Home ==========
                   IconButton(
                     onPressed: (){
                       controller.selectedIndexItem(0);
@@ -36,6 +38,8 @@ class HolderScreen extends StatelessWidget {
                       (const Color(0xffFFFFFF)),
                     )
                   ),
+
+                  // ======== Profile ==========
                   IconButton(
                     onPressed: (){
                       controller.selectedIndexItem(1);
@@ -47,6 +51,12 @@ class HolderScreen extends StatelessWidget {
                       (const Color(0xffFFFFFF)),
                     )
                   ),
+
+                  // ======== Settings ==========
+                  IconButton(
+                    onPressed: (){}, 
+                    icon: const Icon(Iconsax.setting, color: Colors.white,)
+                  )
                 ],
               ),
             ),
