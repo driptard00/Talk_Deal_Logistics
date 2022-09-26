@@ -18,9 +18,11 @@ class DetailBottomSheet{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: const [
+            // ========= Profile Picture =======
             CircleAvatar(
               radius: 50,
             ),
+            // ========== Fullname =========
             Text(
               "Akintade Oluwaseun Timothy",
               style: TextStyle(
@@ -28,6 +30,7 @@ class DetailBottomSheet{
                 fontWeight: FontWeight.bold
               ),
             ),
+            // ========== Address ========
             Flexible(
               child: Text(
                 "Karu extension community 2, New Karu, Abuja",
@@ -38,6 +41,7 @@ class DetailBottomSheet{
                 ),
               ),
             ),
+            // ======== Phonenumber =========
             Text(
               "08163421203",
               style: TextStyle(
