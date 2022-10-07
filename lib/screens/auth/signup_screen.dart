@@ -1,17 +1,23 @@
+import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:form_validator/form_validator.dart';
 import 'package:talk_deals_logistics/routes/app_route_names.dart';
 
+import '../../widgets/app_snackBar_widget.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({Key? key}) : super(key: key);
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final AppSnackBar _appSnackBar = AppSnackBar();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: DoubleBackToCloseApp(
+        snackBar: _appSnackBar.snackBar('Tap back again to exit the app.', 'Info'),
+        child: Container(
           child: Column(
             children: [
               Expanded(
@@ -19,7 +25,7 @@ class SignUpScreen extends StatelessWidget {
                 child: Container(
                   height: Get.height,
                   width: Get.width,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
                       alignment: Alignment.center,
                       image: AssetImage(
@@ -48,11 +54,11 @@ class SignUpScreen extends StatelessWidget {
                 flex: 9,
                 child: SingleChildScrollView(
                   child: Container(
-                    padding: EdgeInsets.fromLTRB(25.0, 30.0, 25.0, 10.0),
+                    padding: const EdgeInsets.fromLTRB(25.0, 30.0, 25.0, 10.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           "Let’s get you started",
                           style: TextStyle(
                             color: Colors.black,
@@ -60,9 +66,9 @@ class SignUpScreen extends StatelessWidget {
                             fontWeight: FontWeight.w700,
                           ),
                         ),
-                        SizedBox(height: 5.0),
+                        const SizedBox(height: 5.0),
 
-                        Text(
+                        const Text(
                           "Create an account to get\namazing deals",
                           style: TextStyle(
                             color: Colors.black,
@@ -70,7 +76,7 @@ class SignUpScreen extends StatelessWidget {
                             height: 1.3,
                           ),
                         ),
-                        SizedBox(height: 15.0),
+                        const SizedBox(height: 15.0),
 
                         Form(
                           key: _formKey,
@@ -80,6 +86,7 @@ class SignUpScreen extends StatelessWidget {
                                 onChanged: (value) {},
                                 // autofocus: true,
                                 keyboardType: TextInputType.name,
+                                validator: ValidationBuilder().required().minLength(3).build(),
                                 decoration: InputDecoration(
                                   labelText: "Username",
                                   labelStyle: TextStyle(
@@ -105,6 +112,7 @@ class SignUpScreen extends StatelessWidget {
                                 onChanged: (value) {},
                                 // autofocus: true,
                                 keyboardType: TextInputType.emailAddress,
+                                validator: ValidationBuilder().required().email().minLength(3).build(),
                                 decoration: InputDecoration(
                                   labelText: "Email",
                                   labelStyle: TextStyle(
@@ -128,6 +136,7 @@ class SignUpScreen extends StatelessWidget {
 
                               TextFormField(
                                 onChanged: (value) {},
+                                validator: ValidationBuilder().build(),
                                 keyboardType: TextInputType.visiblePassword,
                                 decoration: InputDecoration(
                                   labelText: "Password",
@@ -151,6 +160,7 @@ class SignUpScreen extends StatelessWidget {
 
                               TextFormField(
                                 onChanged: (value) {},
+                                validator: ValidationBuilder().build(),
                                 keyboardType: TextInputType.visiblePassword,
                                 decoration: InputDecoration(
                                   labelText: "Confirm Password",
@@ -158,42 +168,42 @@ class SignUpScreen extends StatelessWidget {
                                     color: Colors.black.withOpacity(0.3),
                                     fontSize: 14,
                                   ),
-                                  floatingLabelStyle: TextStyle(
+                                  floatingLabelStyle: const TextStyle(
                                     color: Color(0xFFFF5C2A),
                                   ),
-                                  focusedBorder: UnderlineInputBorder(
+                                  focusedBorder: const UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0xFFFF5C2A),
                                       width: 2.0,
                                     ),
                                   ),
-                                  contentPadding: EdgeInsets.all(0.0),
+                                  contentPadding: const EdgeInsets.all(0.0),
                                 ),
                               ),
-                              SizedBox(height: 28.0),
+                              const SizedBox(height: 28.0),
 
                               TextButton(
                                 onPressed: () {},
                                 style: TextButton.styleFrom(
                                   backgroundColor: Colors.black,
                                   minimumSize: Size(Get.width, 0.0),
-                                  padding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 15.0)
+                                  padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 15.0)
                                 ),
-                                child: Text(
+                                child: const Text(
                                   "Sign up",
                                   style: TextStyle(
                                     color: Colors.white
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 25.0),
+                              const SizedBox(height: 25.0),
                             ],
                           ),
                         ),
 
                         Row(
                           children: [
-                            Text(
+                            const Text(
                               "or continue with ",
                               style: TextStyle(
                                 color: Colors.black,
@@ -223,13 +233,13 @@ class SignUpScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 35.0),
+                        const SizedBox(height: 35.0),
 
                         //  Already have an account.
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
+                            const Text(
                               "Already have an account? ",
                               style: TextStyle(
                                 color: Colors.black,
@@ -241,7 +251,7 @@ class SignUpScreen extends StatelessWidget {
                                 print("GGGG::: $SignUpScreen");
                                 Get.offNamed(loginscreen);
                               },
-                              child: Text(
+                              child: const Text(
                                 "Login Here",
                                 style: TextStyle(
                                     color: Color(0xFFFF5C2A),
@@ -260,6 +270,7 @@ class SignUpScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
     );
   }
 }

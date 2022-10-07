@@ -1,15 +1,23 @@
+import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:form_validator/form_validator.dart';
 import 'package:talk_deals_logistics/routes/app_route_names.dart';
+
+import '../../widgets/app_snackBar_widget.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final AppSnackBar _appSnackBar = AppSnackBar();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: DoubleBackToCloseApp(
+        snackBar: _appSnackBar.snackBar('Tap back again to exit the app.', 'Info'),
+        child: Container(
           child: Column(
             children: [
               Expanded(
@@ -17,7 +25,7 @@ class LoginScreen extends StatelessWidget {
                 child: Container(
                   height: Get.height,
                   width: Get.width,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     image: DecorationImage(
                       alignment: Alignment.center,
                       image: AssetImage(
@@ -91,6 +99,7 @@ class LoginScreen extends StatelessWidget {
                                 },
                                 // autofocus: true,
                                 keyboardType: TextInputType.name,
+                                validator: ValidationBuilder().required().minLength(3).build(),
                                 decoration: InputDecoration(
                                   labelText: "Username",
                                   labelStyle: TextStyle(
@@ -116,6 +125,7 @@ class LoginScreen extends StatelessWidget {
                                 onChanged: (value) {
                                   // controller.updatePassword(value);
                                 },
+                                validator: ValidationBuilder().email().maxLength(50).build(),
                                 keyboardType: TextInputType.visiblePassword,
                                 decoration: InputDecoration(
                                   labelText: "Password",
@@ -136,6 +146,7 @@ class LoginScreen extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(height: 35.0),
+
                               TextButton(
                                 onPressed: () {
                                   Get.offNamed(holderscreen);
@@ -238,6 +249,7 @@ class LoginScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
     );
   }
 }

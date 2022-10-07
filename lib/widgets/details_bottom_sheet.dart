@@ -21,6 +21,9 @@ class DetailBottomSheet{
             // ========= Profile Picture =======
             CircleAvatar(
               radius: 50,
+              backgroundImage: AssetImage(
+                "images/profile.png"
+              ),
             ),
             // ========== Fullname =========
             Text(

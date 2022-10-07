@@ -4,7 +4,7 @@ import 'package:talk_deals_logistics/routes/app_route_names.dart';
 import 'package:talk_deals_logistics/routes/app_routes.dart';
 
 
-String initialRoute = loginscreen;
+String initialRoute = splashscreen;
 
 void main(List<String> args) {
   runApp(const MyApp());
